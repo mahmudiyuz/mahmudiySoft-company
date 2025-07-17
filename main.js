@@ -1,6 +1,8 @@
+// Form validation and submission
 document.querySelector("form").addEventListener("submit", function (e) {
   e.preventDefault();
 
+  // Get input fields
   const name = document.getElementById("name");
   const email = document.getElementById("email");
   const message = document.getElementById("message");
@@ -8,6 +10,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
   let isValid = true;
   document.querySelectorAll(".error-text").forEach((el) => el.remove());
 
+  // Check and show error, when submission
   if (name.value.trim() === "") {
     showError(name, "Please enter your name");
     isValid = false;
@@ -32,6 +35,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
     e.target.reset();
   }
 
+  // Show error, when inputs invalid
   function showError(inputElement, message) {
     const error = document.createElement("div");
     error.className = "error-text text-red-500 text-sm mt-1";
@@ -40,12 +44,13 @@ document.querySelector("form").addEventListener("submit", function (e) {
   }
 });
 
+// Close sucess modal
 function closeSuccessModal() {
   document.getElementById("successModal").classList.add("hidden");
 }
 
-// ESC bosilganda modalni yopish
-document.addEventListener("keydown", function (e) {
+// Close modal, while click ESC keyboard
+document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     closeSuccessModal();
   }
