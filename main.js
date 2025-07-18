@@ -1,3 +1,5 @@
+AOS.init({ duration: 1000, once: true });
+
 // Form validation and submission
 document.querySelector("form").addEventListener("submit", function (e) {
   e.preventDefault();
