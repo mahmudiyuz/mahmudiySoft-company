@@ -3,6 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Custom web, mobile, and Telegram bot development for businesses. Build scalable and modern digital products with MahmudiySoft."
+    />
+    <meta
+      name="keywords"
+      content="MahmudiySoft, Web development, Mobile apps, Telegram bots, IT solutions, Software development, Vue.js, TailwindCSS, Node.js, PostgreSQL, Express.js"
+    />
+
+    <meta property="og:title" content="MahmudiySoft – Smart IT Solutions" />
+    <meta
+      property="og:description"
+      content="Custom web, mobile, and Telegram bot development services for modern businesses."
+    />
+    <meta property="og:image" content="./assets/images/video-preview.png" />
+    <meta property="og:url" content="https://mahmudiy-soft.netlify.app/" />
+    <meta property="og:type" content="website" />
     <title>MahmudiySoft – Smart IT Solutions</title>
     <link rel="icon" href="./assets/images/logo.png" />
     <link
@@ -45,13 +62,13 @@
       data-aos="fade-up"
     >
       <video
-        class="absolute top-0 left-0 w-full h-full object-cover z-0"
         autoplay
         muted
         loop
         playsinline
-        preload="metadata"
-        aria-hidden="true"
+        preload="none"
+        poster="./assets/images/video-preview.png"
+        class="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
         <source src="./assets/video/tech-world.mp4" type="video/mp4" />
       </video>
@@ -263,7 +280,8 @@
 
     <!-- Footer -->
     <footer
-      class="bg-gray-800 text-gray-300 px-6 pt-12 pb-5 text-center md:text-left"
+      class="bg-gray-800 text-gray-300 px-6 pt-12 pb-5 text-center md:text-left rounded-t-3xl"
+      data-aos="fade-down"
     >
       <div
         class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-20 text-sm"
@@ -284,6 +302,7 @@
               <a
                 target="_blank"
                 title="mahmudiyuz"
+                aria-label="Linkedin profile"
                 href="https://www.linkedin.com/in/mahmudiyuz/"
               >
                 <figure
@@ -297,6 +316,7 @@
               <a
                 target="_blank"
                 title="MahmudiyUz"
+                aria-label="Telegram profile"
                 href="https://t.me/MahmudiyUz"
               >
                 <figure
@@ -310,6 +330,7 @@
             <li>
               <a
                 target="_blank"
+                aria-label="Email address"
                 title="muhammadqodirmahmudiy@gmail.com"
                 href="mailto:muhammadqodirmahmudiy@gmail.com"
               >
@@ -325,6 +346,7 @@
               <a
                 target="_blank"
                 title="mahmudiyuz"
+                aria-label="Instagram profile"
                 href="https://www.instagram.com/mahmudiy.uz/"
               >
                 <figure
@@ -400,6 +422,25 @@
 
     <!-- AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "MahmudiySoft",
+        "url": "https://mahmudiy-soft.netlify.app/",
+        "logo": "./assets/images/logo.png",
+        "sameAs": [
+          "https://www.linkedin.com/in/mahmudiyuz/",
+          "https://t.me/MahmudiyUz",
+          "https://www.instagram.com/mahmudiy.uz/"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "muhammadqodirmahmudiy@gmail.com",
+          "contactType": "Customer Service"
+        }
+      }
+    </script>
     <script src="./main.js"></script>
   </body>
 </html>
