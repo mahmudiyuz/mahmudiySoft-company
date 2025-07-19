@@ -1,7 +1,7 @@
 AOS.init({ duration: 1000, once: true });
 
 // Form validation and submission
-document.querySelector("form").addEventListener("submit", function (e) {
+document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   // Get input fields
@@ -12,12 +12,13 @@ document.querySelector("form").addEventListener("submit", function (e) {
   let isValid = true;
   document.querySelectorAll(".error-text").forEach((el) => el.remove());
 
-  // Check and show error, when submission
+  // Check name is valid
   if (name.value.trim() === "") {
     showError(name, "Please enter your name");
     isValid = false;
   }
 
+  // check email is valid
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (email.value.trim() === "") {
     showError(email, "Please enter your email");
@@ -27,28 +28,67 @@ document.querySelector("form").addEventListener("submit", function (e) {
     isValid = false;
   }
 
+  // check message is valid
   if (message.value.trim() === "") {
     showError(message, "Please enter your message");
     isValid = false;
   }
 
+  // check, are all field valid
   if (isValid) {
-    document.getElementById("successModal").classList.remove("hidden");
-    e.target.reset();
-  }
+    // get input values
+    const body = {
+      name: name.value,
+      email: email.value,
+      message: message.value,
+    };
 
-  // Show error, when inputs invalid
-  function showError(inputElement, message) {
-    const error = document.createElement("div");
-    error.className = "error-text text-red-500 text-sm mt-1";
-    error.textContent = message;
-    inputElement.parentNode.appendChild(error);
+    // post message api
+    try {
+      isLoading(true);
+
+      await fetch("https://api-mahmudiy-uz.onrender.com/create-message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      document.getElementById("successModal").classList.remove("hidden");
+      e.target.reset();
+    } catch (error) {
+      showError(
+        message,
+        "Error on sending message. Please, check and try again!"
+      );
+      isValid = false;
+      throw error;
+    } finally {
+      isLoading(false);
+    }
   }
 });
+
+// Show error, when inputs invalid
+function showError(inputElement, message) {
+  const error = document.createElement("div");
+  error.className = "error-text text-red-500 text-sm mt-1";
+  error.textContent = message;
+  inputElement.parentNode.appendChild(error);
+}
 
 // Close sucess modal
 function closeSuccessModal() {
   document.getElementById("successModal").classList.add("hidden");
+}
+
+// toggle loader
+function isLoading(isLoader) {
+  const loader = document.querySelector(".loader").classList;
+
+  if (isLoader) return loader.remove("hidden");
+  loader.add("hidden");
 }
 
 // Close modal, while click ESC keyboard
